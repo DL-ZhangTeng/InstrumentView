@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="InstrumentView">
+        <attr name="minCircleRadius" format="dimension" />
+        <attr name="minCircleColor" format="color"/>
+        <attr name="firstRingColor" format="color"/>
+        <attr name="secondRingColor" format="color"/>
+        <attr name="progressBackgroundColor" format="color"/>
+        <attr name="progressStartColor" format="color"/>
+        <attr name="progressEndColor" format="color"/>
+        <attr name="percent" format="float"/>
+        <attr name="backgroundColor" format="color"/>
+        <attr name="pointerColor" format="color"/>
+        <attr name="tikeGroup" format="integer"/>
+        <attr name="tikeStr" format="reference"/>
+        <attr name="tikeTextSize" format="dimension"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="textColor" format="color"/>
+        <attr name="centerStr" format="string"/>
+        <attr name="textStr" format="string"/>
+    </declare-styleable>
+</resources>
