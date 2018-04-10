@@ -345,6 +345,191 @@ public class InstrumentView extends View {
         mHeight = getHeight();
     }
 
+    public int getBackgroundRadius() {
+        return backgroundRadius;
+    }
+
+    public void setBackgroundRadius(int backgroundRadius) {
+        this.backgroundRadius = backgroundRadius;
+    }
+
+    public int getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    @Override
+    public void setBackgroundColor(int backgroundColor) {
+        this.backgroundColor = backgroundColor;
+    }
+
+    public int getMinCircleRadius() {
+        return minCircleRadius;
+    }
+
+    public void setMinCircleRadius(int minCircleRadius) {
+        this.minCircleRadius = minCircleRadius;
+    }
+
+    public int getMinCircleColor() {
+        return minCircleColor;
+    }
+
+    public void setMinCircleColor(int minCircleColor) {
+        this.minCircleColor = minCircleColor;
+    }
+
+    public int getFirstRingRadius() {
+        return firstRingRadius;
+    }
+
+    public void setFirstRingRadius(int firstRingRadius) {
+        this.firstRingRadius = firstRingRadius;
+    }
+
+    public int getFirstRingColor() {
+        return firstRingColor;
+    }
+
+    public void setFirstRingColor(int firstRingColor) {
+        this.firstRingColor = firstRingColor;
+    }
+
+    public int getSecondRingRadius() {
+        return secondRingRadius;
+    }
+
+    public void setSecondRingRadius(int secondRingRadius) {
+        this.secondRingRadius = secondRingRadius;
+    }
+
+    public int getSecondRingColor() {
+        return secondRingColor;
+    }
+
+    public void setSecondRingColor(int secondRingColor) {
+        this.secondRingColor = secondRingColor;
+    }
+
+    public int getProgressRadius() {
+        return progressRadius;
+    }
+
+    public void setProgressRadius(int progressRadius) {
+        this.progressRadius = progressRadius;
+    }
+
+    public int getProgressBackgroundColor() {
+        return progressBackgroundColor;
+    }
+
+    public void setProgressBackgroundColor(int progressBackgroundColor) {
+        this.progressBackgroundColor = progressBackgroundColor;
+    }
+
+    public int getProgressStartColor() {
+        return progressStartColor;
+    }
+
+    public void setProgressStartColor(int progressStartColor) {
+        this.progressStartColor = progressStartColor;
+    }
+
+    public int getProgressEndColor() {
+        return progressEndColor;
+    }
+
+    public void setProgressEndColor(int progressEndColor) {
+        this.progressEndColor = progressEndColor;
+    }
+
+    public float getPercent() {
+        return percent;
+    }
+
+    public void setPercent(float percent) {
+        this.percent = percent;
+    }
+
+    public int getLongLine() {
+        return longLine;
+    }
+
+    public void setLongLine(int longLine) {
+        this.longLine = longLine;
+    }
+
+    public int getShortLine() {
+        return shortLine;
+    }
+
+    public void setShortLine(int shortLine) {
+        this.shortLine = shortLine;
+    }
+
+    public int getLineColor() {
+        return lineColor;
+    }
+
+    public void setLineColor(int lineColor) {
+        this.lineColor = lineColor;
+    }
+
+    public int getTikeGroup() {
+        return tikeGroup;
+    }
+
+    public void setTikeGroup(int tikeGroup) {
+        this.tikeGroup = tikeGroup;
+    }
+
+    public int getTikeTextSize() {
+        return tikeTextSize;
+    }
+
+    public void setTikeTextSize(int tikeTextSize) {
+        this.tikeTextSize = tikeTextSize;
+    }
+
+    public int getTextSize() {
+        return textSize;
+    }
+
+    public void setTextSize(int textSize) {
+        this.textSize = textSize;
+    }
+
+    public int getTextColor() {
+        return textColor;
+    }
+
+    public void setTextColor(int textColor) {
+        this.textColor = textColor;
+    }
+
+    public String getTextStr() {
+        return textStr;
+    }
+
+    public void setTextStr(String textStr) {
+        this.textStr = textStr;
+    }
+
+    public String getCenterStr() {
+        return centerStr;
+    }
+
+    public void setCenterStr(String centerStr) {
+        this.centerStr = centerStr;
+    }
+
+    public CharSequence[] getTikeStr() {
+        return tikeStr;
+    }
+
+    public void setTikeStr(CharSequence[] tikeStr) {
+        this.tikeStr = tikeStr;
+    }
+
     private int dp2px(int dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, myContext.getResources().getDisplayMetrics());
     }
