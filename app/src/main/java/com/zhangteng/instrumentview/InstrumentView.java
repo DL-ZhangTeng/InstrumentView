@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
@@ -18,7 +19,6 @@ public class InstrumentView extends View {
     private Context myContext;
 
     private Paint backgroundPaint;
-    private Paint centerCirclePaint;
     private Paint firstRingPaint;
     private Paint secondRingPaint;
     private Paint progressBackgroundPaint;
@@ -26,6 +26,9 @@ public class InstrumentView extends View {
     private Paint tikePaint;
     private Paint tikeTextPaint;
     private Paint textPaint;
+    private Paint paintPointerRight;
+    private Paint paintPointerLeft;
+    private Paint paintPinterCircle;
     private int backgroundRadius;
     private int backgroundColor;
     private int minCircleRadius;
@@ -171,13 +174,6 @@ public class InstrumentView extends View {
         backgroundPaint.setStrokeWidth(2);
         backgroundPaint.setColor(backgroundColor);
 
-        centerCirclePaint = new Paint();
-        centerCirclePaint.setDither(true);
-        centerCirclePaint.setAntiAlias(true);
-        centerCirclePaint.setStyle(Paint.Style.FILL);
-        centerCirclePaint.setStrokeWidth(2);
-        centerCirclePaint.setColor(minCircleColor);
-
         firstRingPaint = new Paint();
         firstRingPaint.setAntiAlias(true);
         firstRingPaint.setDither(true);
@@ -226,6 +222,24 @@ public class InstrumentView extends View {
         textPaint.setAntiAlias(true);
         textPaint.setTextSize(textSize);
         textPaint.setColor(textColor);
+
+        paintPointerRight = new Paint();
+        paintPointerRight.setAntiAlias(true);
+        paintPointerRight.setColor(getResources().getColor(R.color.rightRight));
+        paintPointerRight.setStyle(Paint.Style.FILL_AND_STROKE);
+        paintPointerRight.setDither(true);
+
+        paintPointerLeft = new Paint();
+        paintPointerLeft.setAntiAlias(true);
+        paintPointerLeft.setColor(getResources().getColor(R.color.leftRight));
+        paintPointerLeft.setStyle(Paint.Style.FILL_AND_STROKE);
+        paintPointerLeft.setDither(true);
+
+        paintPinterCircle = new Paint();
+        paintPinterCircle.setAntiAlias(true);
+        paintPinterCircle.setColor(getResources().getColor(R.color.insideCircle));
+        paintPinterCircle.setStyle(Paint.Style.FILL);
+        paintPinterCircle.setDither(true);
     }
 
 
@@ -256,8 +270,6 @@ public class InstrumentView extends View {
         canvas.translate(mWidth / 2, mHeight / 2);
         //绘制背景圆
         canvas.drawCircle(0, 0, Math.min(backgroundRadius, Math.min(mHeight, mWidth) / 2), backgroundPaint);
-        //绘制中心圆
-        canvas.drawCircle(0, 0, minCircleRadius, centerCirclePaint);
         //绘制第一个圆环
         canvas.drawCircle(0, 0, firstRingRadius, firstRingPaint);
         // 绘制第二个圆环
@@ -271,7 +283,7 @@ public class InstrumentView extends View {
         } else if (percent < 0.0f) {
             percent = 0.0f;
         }
-        canvas.drawArc(rectF, 135, percent * 360, false, progressPaint);
+        canvas.drawArc(rectF, 135, percent * 270, false, progressPaint);
         //绘制刻度
         for (int i = 0; i < tikeStr.length; i++) {
             canvas.save();
@@ -300,6 +312,30 @@ public class InstrumentView extends View {
         Rect centerBound = new Rect();
         textPaint.getTextBounds(centerStr, 0, centerStr.length(), centerBound);
         canvas.drawText(centerStr, -(centerBound.left + centerBound.right) / 2, minCircleRadius * 14, textPaint);
+        //绘制指针
+        RectF rectF1 = new RectF(-minCircleRadius * 2, -minCircleRadius * 2, minCircleRadius * 2, minCircleRadius * 2);
+        canvas.save();
+        float angel = 270 * (percent - 0.5f) - 180;
+        canvas.rotate(angel, 0, 0);//指针与外弧边缘持平
+        Path pathPointerRight = new Path();
+        pathPointerRight.moveTo(0, minCircleRadius * 2);
+        pathPointerRight.arcTo(rectF1, 270, -90);
+        pathPointerRight.lineTo(0, minCircleRadius * 18);
+        pathPointerRight.lineTo(0, minCircleRadius * 2);
+        pathPointerRight.close();
+        Path pathPointerLeft = new Path();
+        pathPointerLeft.moveTo(0, minCircleRadius * 2);
+        pathPointerLeft.arcTo(rectF1, 270, 90);
+        pathPointerLeft.lineTo(0, minCircleRadius * 18);
+        pathPointerLeft.lineTo(0, minCircleRadius * 2);
+        pathPointerLeft.close();
+        Path pathCircle = new Path();
+        pathCircle.addCircle(0, 0, minCircleRadius, Path.Direction.CW);
+        canvas.drawPath(pathPointerLeft, paintPointerLeft);
+        canvas.drawPath(pathPointerRight, paintPointerRight);
+        canvas.drawPath(pathCircle, paintPinterCircle);
+        canvas.restore();
+
     }
 
     @Override
