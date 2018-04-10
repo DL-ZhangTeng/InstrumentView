@@ -295,7 +295,7 @@ public class InstrumentView extends View {
             canvas.rotate(90);
             Rect bound = new Rect();
             tikeTextPaint.getTextBounds(String.valueOf(tikeStr[i]), 0, tikeStr[i].length(), bound);
-            canvas.drawText(String.valueOf(tikeStr[i]), -(bound.left + bound.right) / 2, 0, tikeTextPaint);
+            canvas.drawText(String.valueOf(tikeStr[tikeStr.length - i - 1]), -(bound.left + bound.right) / 2, 0, tikeTextPaint);
             canvas.restore();
             for (int j = 0; j < tikeGroup && i < tikeStr.length - 1; j++) {
                 canvas.save();
@@ -351,6 +351,7 @@ public class InstrumentView extends View {
 
     public void setBackgroundRadius(int backgroundRadius) {
         this.backgroundRadius = backgroundRadius;
+        invalidate();
     }
 
     public int getBackgroundColor() {
@@ -360,6 +361,7 @@ public class InstrumentView extends View {
     @Override
     public void setBackgroundColor(int backgroundColor) {
         this.backgroundColor = backgroundColor;
+        invalidate();
     }
 
     public int getMinCircleRadius() {
@@ -368,6 +370,7 @@ public class InstrumentView extends View {
 
     public void setMinCircleRadius(int minCircleRadius) {
         this.minCircleRadius = minCircleRadius;
+        invalidate();
     }
 
     public int getMinCircleColor() {
@@ -376,6 +379,7 @@ public class InstrumentView extends View {
 
     public void setMinCircleColor(int minCircleColor) {
         this.minCircleColor = minCircleColor;
+        invalidate();
     }
 
     public int getFirstRingRadius() {
@@ -384,6 +388,7 @@ public class InstrumentView extends View {
 
     public void setFirstRingRadius(int firstRingRadius) {
         this.firstRingRadius = firstRingRadius;
+        invalidate();
     }
 
     public int getFirstRingColor() {
@@ -392,6 +397,7 @@ public class InstrumentView extends View {
 
     public void setFirstRingColor(int firstRingColor) {
         this.firstRingColor = firstRingColor;
+        invalidate();
     }
 
     public int getSecondRingRadius() {
@@ -400,6 +406,7 @@ public class InstrumentView extends View {
 
     public void setSecondRingRadius(int secondRingRadius) {
         this.secondRingRadius = secondRingRadius;
+        invalidate();
     }
 
     public int getSecondRingColor() {
@@ -408,6 +415,7 @@ public class InstrumentView extends View {
 
     public void setSecondRingColor(int secondRingColor) {
         this.secondRingColor = secondRingColor;
+        invalidate();
     }
 
     public int getProgressRadius() {
@@ -416,6 +424,7 @@ public class InstrumentView extends View {
 
     public void setProgressRadius(int progressRadius) {
         this.progressRadius = progressRadius;
+        invalidate();
     }
 
     public int getProgressBackgroundColor() {
@@ -424,6 +433,7 @@ public class InstrumentView extends View {
 
     public void setProgressBackgroundColor(int progressBackgroundColor) {
         this.progressBackgroundColor = progressBackgroundColor;
+        invalidate();
     }
 
     public int getProgressStartColor() {
@@ -432,6 +442,7 @@ public class InstrumentView extends View {
 
     public void setProgressStartColor(int progressStartColor) {
         this.progressStartColor = progressStartColor;
+        invalidate();
     }
 
     public int getProgressEndColor() {
@@ -440,6 +451,7 @@ public class InstrumentView extends View {
 
     public void setProgressEndColor(int progressEndColor) {
         this.progressEndColor = progressEndColor;
+        invalidate();
     }
 
     public float getPercent() {
@@ -448,6 +460,7 @@ public class InstrumentView extends View {
 
     public void setPercent(float percent) {
         this.percent = percent;
+        invalidate();
     }
 
     public int getLongLine() {
@@ -456,6 +469,7 @@ public class InstrumentView extends View {
 
     public void setLongLine(int longLine) {
         this.longLine = longLine;
+        invalidate();
     }
 
     public int getShortLine() {
@@ -464,6 +478,7 @@ public class InstrumentView extends View {
 
     public void setShortLine(int shortLine) {
         this.shortLine = shortLine;
+        invalidate();
     }
 
     public int getLineColor() {
@@ -472,6 +487,7 @@ public class InstrumentView extends View {
 
     public void setLineColor(int lineColor) {
         this.lineColor = lineColor;
+        invalidate();
     }
 
     public int getTikeGroup() {
@@ -480,6 +496,7 @@ public class InstrumentView extends View {
 
     public void setTikeGroup(int tikeGroup) {
         this.tikeGroup = tikeGroup;
+        invalidate();
     }
 
     public int getTikeTextSize() {
@@ -488,6 +505,7 @@ public class InstrumentView extends View {
 
     public void setTikeTextSize(int tikeTextSize) {
         this.tikeTextSize = tikeTextSize;
+        invalidate();
     }
 
     public int getTextSize() {
@@ -496,6 +514,7 @@ public class InstrumentView extends View {
 
     public void setTextSize(int textSize) {
         this.textSize = textSize;
+        invalidate();
     }
 
     public int getTextColor() {
@@ -504,6 +523,7 @@ public class InstrumentView extends View {
 
     public void setTextColor(int textColor) {
         this.textColor = textColor;
+        invalidate();
     }
 
     public String getTextStr() {
@@ -512,6 +532,7 @@ public class InstrumentView extends View {
 
     public void setTextStr(String textStr) {
         this.textStr = textStr;
+        invalidate();
     }
 
     public String getCenterStr() {
@@ -520,6 +541,7 @@ public class InstrumentView extends View {
 
     public void setCenterStr(String centerStr) {
         this.centerStr = centerStr;
+        invalidate();
     }
 
     public CharSequence[] getTikeStr() {
@@ -528,6 +550,7 @@ public class InstrumentView extends View {
 
     public void setTikeStr(CharSequence[] tikeStr) {
         this.tikeStr = tikeStr;
+        invalidate();
     }
 
     private int dp2px(int dp) {
